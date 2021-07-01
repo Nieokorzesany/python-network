@@ -1,7 +1,7 @@
 import paramiko
 
-username = "spiderman"
-passwd="spiderman"
+username = ""
+passwd=""
 ip='192.168.1.21'
 ssh_client=paramiko.SSHClient()
 ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
