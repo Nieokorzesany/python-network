@@ -18,7 +18,7 @@ def server_exec(server):
     #cmd="ls -ltr > test"
 
     #stdin,stdout,stderr=ssh_client.exec_command(cmd)
-    command = 'ps aux | head\n'
+    command = 'pwd\n'
     (stdin, stdout, stderr) = ssh_client.exec_command(command)
 
     cmd_output = stdout.read()
@@ -28,5 +28,8 @@ def server_exec(server):
     ssh_client.close()
 
 for idx,server in enumerate(server):
-    print('server number {}'.format(idx))
-    server_exec(server)
+    try:
+        print('server number {}'.format(idx))
+        server_exec(server)
+    except TimeoutError:
+        print("server {} is down".format(idx))
